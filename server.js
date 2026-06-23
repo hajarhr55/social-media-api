@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-
-// ===== CHECK UPLOADS FOLDER =====
 const fs = require("fs");
 const path = require("path");
 
@@ -11,9 +9,6 @@ if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
   console.log("uploads folder created");
 }
-
-console.log("UPLOADS PATH:", uploadPath);
-console.log("EXISTS:", fs.existsSync(uploadPath));
 
 const authRoutes = require("./routes/authRoutes");
 const usersRoutes = require("./routes/usersRoutes");
