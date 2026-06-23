@@ -2,6 +2,15 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+// ===== CHECK UPLOADS FOLDER =====
+const fs = require("fs");
+const path = require("path");
+
+const uploadPath = path.join(__dirname, "../uploads");
+
+console.log("UPLOADS PATH:", uploadPath);
+console.log("EXISTS:", fs.existsSync(uploadPath));
+
 const authRoutes = require("./routes/authRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const postRoutes = require("./routes/postRoutes");
