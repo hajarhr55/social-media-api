@@ -6,7 +6,11 @@ require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 
-const uploadPath = path.join(__dirname, "../uploads");
+const uploadPath = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+  console.log("uploads folder created");
+}
 
 console.log("UPLOADS PATH:", uploadPath);
 console.log("EXISTS:", fs.existsSync(uploadPath));
