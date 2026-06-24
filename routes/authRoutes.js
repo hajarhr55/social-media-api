@@ -10,7 +10,7 @@ const router = express.Router();
 // Register
 router.post("/register", upload.single("image"), async (req, res) => {
   const { username, email, password, name } = req.body;
-  const image = req.file;
+  const image = req.file ? req.file.path : null;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);

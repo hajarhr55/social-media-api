@@ -11,7 +11,7 @@ router.post(
   upload.single("image"),
   async (req, res) => {
     const { title, body } = req.body;
-    const image = req.file;
+    const image = req.file ? req.file.path : null;
 
     try {
       const result = await db.query(

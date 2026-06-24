@@ -1,14 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const fs = require("fs");
-const path = require("path");
-
-const uploadPath = path.join(__dirname, "..", "uploads");
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true });
-  console.log("uploads folder created");
-}
 
 const authRoutes = require("./routes/authRoutes");
 const usersRoutes = require("./routes/usersRoutes");
@@ -19,9 +11,6 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(express.json());
-
-// Serve static image files
-app.use("/uploads", express.static("/uploads"));
 
 // Routes
 app.use("/api/v1", authRoutes);
