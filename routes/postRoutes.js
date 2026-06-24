@@ -18,7 +18,7 @@ router.post(
         `INSERT INTO posts (title, body, image, user_id)
         VALUES ($1, $2, $3, $4)
         RETURNING *`,
-        [title, body, image ? image.filename : null, req.user.id],
+        [title, body, image, req.user.id],
       );
       res.status(201).json({
         message: "Post created successfully ✅",
@@ -190,7 +190,7 @@ router.patch(
     try {
       const { id } = req.params;
       const { title, body } = req.body;
-      const image = req.file ? req.file.filename : null;
+      const image = req.file ? req.file.path : null;
 
       const postResult = await db.query("SELECT * FROM posts WHERE id = $1", [
         id,

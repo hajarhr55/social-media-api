@@ -19,7 +19,7 @@ router.post("/register", upload.single("image"), async (req, res) => {
       `INSERT INTO users (username, email, password, name, image)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [username, email, hashedPassword, name, image ? image.filename : null],
+      [username, email, hashedPassword, name, image],
     );
 
     const user = result.rows[0];

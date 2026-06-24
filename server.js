@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static image files
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("/uploads"));
 
 // Routes
 app.use("/api/v1", authRoutes);
