@@ -13,6 +13,7 @@ router.get("/users/:id", async (req, res) => {
         users.id,
         users.username,
         users.name,
+        users.email,
         users.image,
 
         COUNT(DISTINCT posts.id)::int AS posts_count,
@@ -32,6 +33,7 @@ router.get("/users/:id", async (req, res) => {
         users.id,
         users.username,
         users.name,
+        users.email,
         users.image
       `,
       [id],
